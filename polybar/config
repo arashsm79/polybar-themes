@@ -1,0 +1,254 @@
+;A simple polybar theme by @arashsm79
+;==============
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #dd333333
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #999
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+;monitor = ${env:MONITOR:eDP-1}
+width = 98%
+height = 34
+offset-x = 1%
+offset-y = 1%
+radius = 0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+;border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 3
+module-margin-right = 3
+
+font-0 = "Roboto:style=Medium:pixelsize=11;2"
+font-1 = "unifont:fontformat=truetype:size=8:antialias=false;0"
+font-2 = "Symbols Nerd Font:fontformat=truetype:pixelsize=13;4"
+font-3 = "Roboto:style=Bold:pixelsize=15;2"
+font-4 = "Roboto:style=Medium:pixelsize=10;2"
+
+modules-left = workspaces polywins 
+modules-center = 
+modules-right = xkeyboard memory cpu backlight pulseaudio wlan eth date 
+
+tray-position = right
+tray-padding = 2
+
+override-redirect = false 
+
+dpi = 120
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+wm-name = xfwm4
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true 
+
+[global/wm]
+margin-top = 5
+margin-bottom = 9
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = #ffe68183
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+label-layout-foreground = #ffe68183
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/scripts/polywins.sh 2>/dev/null
+format = <label>
+label = %{T5}%output%
+label-padding = 1
+tail = true
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+format = <ramp> <label>
+ramp-foreground = #ff89beba 
+label-foreground = #ff89beba 
+label = %percentage%%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = %{T3}龍
+format-prefix-foreground = #ffd3a0bc
+label-foreground = #ffd3a0bc
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #ffd9bb80
+label-foreground = #ffd9bb80
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp5s0
+interval = 2 
+
+format-connected =  <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #ff87c095 
+format-connected-underline = #9f78e1
+label-connected =  %downspeed%
+label-connected-foreground = #ff87c095 
+
+format-disconnected =
+
+format-packetloss = <animation-packetloss> <label-connected>
+format-packetloss-foreground = ${colors.foreground-alt}
+
+animation-packetloss-0 =  
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected =  <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-underline = #9f78e1
+label-connected =  %downspeed%
+label-connected-foreground = #ff87c095 
+
+label-disconnected = 
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = #ffd3c5a8
+label-foreground = #ffd3c5a8
+format-underline = #0a6cf5
+
+label = %date% %time%
+
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+ramp-volume-foreground = #ffa3bc7d 
+label-volume-foreground = #ffa3bc7d 
+label-muted = muted
+format-muted-prefix = " "
+label-muted-foreground = #666
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/workspaces]
+type = internal/xworkspaces
+enable-click = true
+enable-scroll = true
+Additional formatting
+icon-0 = w1;1
+icon-1 = w2;2
+icon-2 = w3;3
+icon-3 = w4;4
+icon-4 = w5;
+icon-5 = w6;
+icon-6 = w7;
+icon-7 = w8;
+icon-default = " "
+format = <label-state>
+format-padding = 2
+
+label-active = "%{T4}%icon%"
+label-active-foreground = #ff666666
+label-active-background = #ff95c1c0
+label-active-underline = #f59335
+label-active-padding = 2
+
+label-occupied = "%{T4}%icon%"
+label-occupied-underline = #95c1c0
+label-occupied-background = ${colors.background}
+label-occupied-foreground = #95c1c0
+label-occupied-padding = 2
+
+label-urgent = "%{T4}%icon%"
+label-urgent-foreground = #fec7cd
+label-urgent-background = ${colors.background}
+label-urgent-underline = #fec7cd
+label-urgent-padding = 2
+
+label-empty = "%{T4}%icon%"
+label-empty-foreground = #5595c1c0
+label-empty-background = ${colors.background-alt}
+label-empty-padding = 2
+
