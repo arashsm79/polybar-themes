@@ -37,7 +37,7 @@ module-margin-left = 3
 module-margin-right = 3
 
 font-0 = "Roboto:style=Medium:pixelsize=11;2"
-font-1 = "unifont:fontformat=truetype:size=8:antialias=false;0"
+font-1 = "Roboto:style=Medium:pixelsize=8;2"
 font-2 = "Symbols Nerd Font:fontformat=truetype:pixelsize=13;4"
 font-3 = "Roboto:style=Bold:pixelsize=15;2"
 font-4 = "Roboto:style=Medium:pixelsize=10;2"
