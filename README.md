@@ -3,7 +3,8 @@ A simple polybar theme
 
 
  ![Alt text](/screenshots/polybarconf.png?raw=true "Polybar")
- 
+  [Background](https://unsplash.com/photos/IiJfo8b-6ec)
+
  # Fonts
  
  - Symbols Nerd Fonts
@@ -15,5 +16,5 @@ A simple polybar theme
  # Uses
  
  [Poly Wins](https://github.com/alnj/polywins)
- 
+
 
