@@ -1,5 +1,7 @@
-# polybar-themes
-A simple polybar theme
+# polybar-theme
+A simple polybar theme. 
+
+This is currently configured for xfwm4, you may need slight changes to use it on other WMs.
 
 
  ![Alt text](/screenshots/polybarconf.png?raw=true "Polybar")
@@ -7,14 +9,12 @@ A simple polybar theme
 
  # Fonts
  
- - Symbols Nerd Fonts
+ - [Symbols Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
  
- - Roboto
- 
+ - [Roboto](https://material.io/design/typography/the-type-system.html#type-scale)
  
  
  # Uses
- 
- [Poly Wins](https://github.com/alnj/polywins)
+ [Polywins](https://github.com/alnj/polywins)
 
 
