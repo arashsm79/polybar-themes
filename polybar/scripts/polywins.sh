@@ -11,12 +11,12 @@ inactive_text_color="#696969"
 inactive_bg=
 inactive_underline=
 
-separator="·"
+separator=" . "
 show="window_title" # options: window_title, window_class, window_classname
 forbidden_classes="Polybar Conky Gmrun Xfdesktop"
 empty_desktop_message="Desktop"
 
-char_limit=20
+char_limit=15
 max_windows=8
 char_case="normal" # normal, upper, lower
 add_spaces="true"
@@ -167,14 +167,14 @@ generate_window_list() {
 			window_count=$(( window_count + 1 ))
 			continue
 		fi
-		
+
 		# Show the user-selected window property
 		case "$show" in
 			"window_class") w_name="$cls" ;;
 			"window_classname") w_name="$cname" ;;
 			"window_title") w_name="$title" ;;
 		esac
-		
+
 		# Use user-selected character case
 		case "$char_case" in
 			"lower") w_name=$(
@@ -194,6 +194,11 @@ generate_window_list() {
 		if [ "$add_spaces" = "true" ]; then
 			w_name=" $w_name "
 		fi
+
+        # Remove invalid utf-8 characters
+
+        w_name=$(echo -n "$w_name" | iconv -f utf-8 -t utf-8 -c )
+
 
 		# Add left and right formatting to displayed name
 		if [ "$wid" = "$active_wid" ]; then
@@ -232,7 +237,7 @@ generate_window_list() {
 	if [ "$window_count" = 0 ]; then
 		printf "%s" "$empty_desktop_message"
 	fi
-	
+
 	# Print newline
 	echo ""
 }
